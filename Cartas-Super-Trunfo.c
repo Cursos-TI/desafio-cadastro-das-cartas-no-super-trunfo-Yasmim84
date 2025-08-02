@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    
+
     // Declaração das variáveis de duas cartas
 
     char Cidade1[50], Cidade2[50];
