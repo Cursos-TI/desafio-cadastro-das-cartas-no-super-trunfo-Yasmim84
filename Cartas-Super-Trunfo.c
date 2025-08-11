@@ -1,101 +1,102 @@
 #include <stdio.h>
+#include <string.h>
+
+#define UM_BILHAO 1000000000.0f
 
 int main() {
 
-    // Declaração das variáveis de duas cartas
+    // Declaração das variáveis
+    char cidade1[50], cidade2[50];
+    char estado1[3], estado2[3];
+    char codigo1[4], codigo2[4];
+    unsigned long populacao1, populacao2;
+    int p_turistico1, p_turistico2;
+    float area1, area2;
+    float pib1, pib2, pib_per_capita1, pib_per_capita2;
+    float densidade1, densidade2;
 
-    char Cidade1[50], Cidade2[50];
-    char Estado1[50], Estado2[50];
-    char Código1[20], Código2[20];
-    int População1, População2;
-    int P_turístico1, P_turístico2;
-    float Área1, Área2;
-    float PIB1, PIB2, PIBpercapita1, PIBpercapita2;
-    float Densidade1, Densidade2;
-     
-    // Coleta de informações sobre a primeira carta 
+    // Coleta de dados da Carta 1
+    printf("Carta 01\n");
 
-    printf("Carta 01 \n");
+    printf("Informe o código da carta: ");
+    scanf("%3s", codigo1);
 
-    printf("Informe qual é o código da carta: ");
-    scanf("%s", Código1);
+    printf("Informe o estado: ");
+    scanf("%2s", estado1);
 
-    printf("Informe qual é o estado da carta: ");
-    scanf("%s", Estado1);
-
+    getchar(); // Limpa o buffer antes do fgets
     printf("Informe o nome da cidade: ");
-    getchar(); // Limpar o buffer de entrada
-    fgets(Cidade1, sizeof(Cidade1), stdin);
+    fgets(cidade1, sizeof(cidade1), stdin);
+    cidade1[strcspn(cidade1, "\n")] = '\0'; // Remove o '\n'
 
-    printf("Informe qual é a população desta carta: ");
-    scanf("%d", &População1);
+    printf("Informe a população: ");
+    scanf("%lu", &populacao1);
 
-    printf("Informe qual a área em Km²: ");
-    scanf("%f", &Área1);
+    printf("Informe a área em Km²: ");
+    scanf("%f", &area1);
 
-    printf("Informe qual é o PIB: ");
-    scanf("%f", &PIB1);
+    printf("Informe o PIB (em bilhões de reais): ");
+    scanf("%f", &pib1);
 
-    printf("Informe quantos pontos turísticos: ");
-    scanf("%d", &P_turístico1);
+    printf("Informe o número de pontos turísticos: ");
+    scanf("%d", &p_turistico1);
 
-    // Coleta de informações da segunda carta
+    // Coleta de dados da Carta 2
+    printf("\nCarta 02\n");
 
-    printf("Carta 02 \n");
+    printf("Informe o código da carta: ");
+    scanf("%3s", codigo2);
 
-    printf("Informe qual é o código da carta: ");
-    scanf("%s", Código2);
+    printf("Informe o estado: ");
+    scanf("%2s", estado2);
 
-    printf("Informe qual é o estado da carta: ");
-    scanf("%s", Estado2);
-
+    getchar(); // Limpa o buffer antes do fgets
     printf("Informe o nome da cidade: ");
-    getchar(); // Limpar o buffer de entrada
-    fgets(Cidade2, sizeof(Cidade2), stdin);
+    fgets(cidade2, sizeof(cidade2), stdin);
+    cidade2[strcspn(cidade2, "\n")] = '\0'; // Remove o '\n'
 
-    printf("Informe qual é a população desta carta: ");
-    scanf("%d", &População2);
+    printf("Informe a população: ");
+    scanf("%lu", &populacao2);
 
-    printf("Informe qual a área em Km²: ");
-    scanf("%f", &Área2);
+    printf("Informe a área em Km²: ");
+    scanf("%f", &area2);
 
-    printf("Informe qual é o PIB: ");
-    scanf("%f", &PIB2);
+    printf("Informe o PIB (em bilhões de reais): ");
+    scanf("%f", &pib2);
 
-    printf("Informe quantos pontos turísticos: ");
-    scanf("%d", &P_turístico2);
+    printf("Informe o número de pontos turísticos: ");
+    scanf("%d", &p_turistico2);
 
-    // Cálculo da densidade populacional 
-    Densidade1 = População1 / Área1;
-    Densidade2 = População2 / Área2;
+    // Cálculo da densidade populacional e PIB per capita
+    densidade1 = (float)populacao1 / area1;
+    pib_per_capita1 = (pib1 * UM_BILHAO) / (float)populacao1;
 
-    //Cálculo do PIB per capita
-    PIBpercapita1 = PIB1 / População1;
-    PIBpercapita2 = PIB2 / População2;
+    densidade2 = (float)populacao2 / area2;
+    pib_per_capita2 = (pib2 * UM_BILHAO) / (float)populacao2;
 
-    // saída com os dados coletados
-    
-    printf("\n Dados da Carta 1:\n");
-    printf("Código: %s\n", Código1);
-    printf("Estado: %s\n", Estado1);
-    printf("Nome da Cidade: %s", Cidade1);
-    printf("População: %d\n", População1);
-    printf("Área: %.2f Km²\n", Área1);
-    printf("PIB: %f\n", PIB1);
-    printf("Número de Pontos Turísticos: %d\n\n", P_turístico1);
-    printf("Densidade Populacional: %f hab/Km²\n", Densidade1);
-    printf("PIB per Capita: %f reais\n", PIBpercapita1);
+    // Exibição dos dados
+    printf("\nDados da Carta 1:\n");
+    printf("Código: %s\n", codigo1);
+    printf("Estado: %s\n", estado1);
+    printf("Cidade: %s\n", cidade1);
+    printf("População: %lu\n", populacao1);
+    printf("Área: %.2f Km²\n", area1);
+    printf("PIB: R$ %.2f bilhões\n", pib1);
+    printf("Pontos Turísticos: %d\n", p_turistico1);
+    printf("Densidade Populacional: %.2f hab/Km²\n", densidade1);
+    printf("PIB per Capita: R$ %.2f\n", pib_per_capita1);
 
-    printf("\n Dados da Carta 2:\n");
-    printf("Código: %s\n", Código2);
-    printf("Estado: %s\n", Estado2);
-    printf("Nome da Cidade: %s", Cidade2);
-    printf("População: %d\n", População2);
-    printf("Área: %.2f Km²\n", Área2);
-    printf("PIB: %f\n", PIB2);
-    printf("Número de Pontos Turísticos: %d\n", P_turístico2);
-    printf("Densidade Populacional: %f hab/Km²\n", Densidade2);
-    printf("PIB per capita: %f\n", PIBpercapita2);
+    printf("\nDados da Carta 2:\n");
+    printf("Código: %s\n", codigo2);
+    printf("Estado: %s\n", estado2);
+    printf("Cidade: %s\n", cidade2);
+    printf("População: %lu\n", populacao2);
+    printf("Área: %.2f Km²\n", area2);
+    printf("PIB: R$ %.2f bilhões\n", pib2);
+    printf("Pontos Turísticos: %d\n", p_turistico2);
+    printf("Densidade Populacional: %.2f hab/Km²\n", densidade2);
+    printf("PIB per Capita: R$ %.2f\n", pib_per_capita2);
 
     return 0;
 }
+
