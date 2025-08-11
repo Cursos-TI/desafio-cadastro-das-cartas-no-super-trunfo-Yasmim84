@@ -15,7 +15,7 @@ int main() {
     float pib1, pib2, pib_per_capita1, pib_per_capita2;
     float densidade1, densidade2;
 
-    // Coleta de dados da Carta 1
+    // Coleta de dados da carta 1
     printf("Carta 01\n");
 
     printf("Informe o código da carta: ");
@@ -41,7 +41,7 @@ int main() {
     printf("Informe o número de pontos turísticos: ");
     scanf("%d", &p_turistico1);
 
-    // Coleta de dados da Carta 2
+    // Coleta de dados da carta 2
     printf("\nCarta 02\n");
 
     printf("Informe o código da carta: ");
